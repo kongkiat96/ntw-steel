@@ -160,7 +160,7 @@
 				<div class="navbar-category">
 					<button type="button" id="categoryButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="ri-menu-line"></i>
-						สินค้าทั้งหมด
+						ALL CATEGORIES
 						<i class="arrow-down ri-arrow-down-s-line"></i>
 					</button>
 
