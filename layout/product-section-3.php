@@ -45,12 +45,7 @@
 										</ul>
 			
 										<ul class="products-cart-wish-view">
-											<li>
-												<a href="shopping-cart.html" class="default-btn">
-													<i class="ri-shopping-cart-line"></i>
-													Add To Cart
-												</a>
-											</li>
+											
 											<li>
 												<a href="wishlist.html" class="wish-btn">
 													<i class="ri-heart-line"></i>
@@ -113,12 +108,7 @@
 										</ul>
 			
 										<ul class="products-cart-wish-view">
-											<li>
-												<a href="shopping-cart.html" class="default-btn">
-													<i class="ri-shopping-cart-line"></i>
-													Add To Cart
-												</a>
-											</li>
+											
 											<li>
 												<a href="wishlist.html" class="wish-btn">
 													<i class="ri-heart-line"></i>
@@ -180,12 +170,7 @@
 										</ul>
 			
 										<ul class="products-cart-wish-view">
-											<li>
-												<a href="shopping-cart.html" class="default-btn">
-													<i class="ri-shopping-cart-line"></i>
-													Add To Cart
-												</a>
-											</li>
+											
 											<li>
 												<a href="wishlist.html" class="wish-btn">
 													<i class="ri-heart-line"></i>
@@ -248,12 +233,7 @@
 										</ul>
 			
 										<ul class="products-cart-wish-view">
-											<li>
-												<a href="shopping-cart.html" class="default-btn">
-													<i class="ri-shopping-cart-line"></i>
-													Add To Cart
-												</a>
-											</li>
+											
 											<li>
 												<a href="wishlist.html" class="wish-btn">
 													<i class="ri-heart-line"></i>
@@ -316,12 +296,7 @@
 										</ul>
 			
 										<ul class="products-cart-wish-view">
-											<li>
-												<a href="shopping-cart.html" class="default-btn">
-													<i class="ri-shopping-cart-line"></i>
-													Add To Cart
-												</a>
-											</li>
+											
 											<li>
 												<a href="wishlist.html" class="wish-btn">
 													<i class="ri-heart-line"></i>
@@ -383,12 +358,7 @@
 										</ul>
 			
 										<ul class="products-cart-wish-view">
-											<li>
-												<a href="shopping-cart.html" class="default-btn">
-													<i class="ri-shopping-cart-line"></i>
-													Add To Cart
-												</a>
-											</li>
+											
 											<li>
 												<a href="wishlist.html" class="wish-btn">
 													<i class="ri-heart-line"></i>
@@ -448,12 +418,7 @@
 										</ul>
 			
 										<ul class="products-cart-wish-view">
-											<li>
-												<a href="shopping-cart.html" class="default-btn">
-													<i class="ri-shopping-cart-line"></i>
-													Add To Cart
-												</a>
-											</li>
+											
 											<li>
 												<a href="wishlist.html" class="wish-btn">
 													<i class="ri-heart-line"></i>
@@ -518,12 +483,7 @@
 										</ul>
 			
 										<ul class="products-cart-wish-view">
-											<li>
-												<a href="shopping-cart.html" class="default-btn">
-													<i class="ri-shopping-cart-line"></i>
-													Add To Cart
-												</a>
-											</li>
+											
 											<li>
 												<a href="wishlist.html" class="wish-btn">
 													<i class="ri-heart-line"></i>
