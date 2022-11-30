@@ -36,7 +36,7 @@
 		<div class="row align-items-center">
 			<div class="col-lg-3">
 				<div class="logo">
-					<a href="index.html">
+					<a href="index">
 						<img src="assets/images/logo2.png" alt="Image">
 					</a>
 				</div>
