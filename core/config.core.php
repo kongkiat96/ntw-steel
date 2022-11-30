@@ -1,7 +1,7 @@
 <?php
 // MySQL hostname
 define('DB_HOST', 'localhost');
-
+ 
 // MySQL database username
 define('DB_USERNAME', 'root');
 
