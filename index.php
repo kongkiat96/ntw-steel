@@ -1,3 +1,12 @@
+<?php 
+// error_reporting(0);
+require("core/config.core.php");
+require("core/connect.core.php");
+$getdata = new clear_db();
+$connect = $getdata->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+mysqli_set_charset($connect, "utf8");
+// $getgroup_product = $getdata->my_sql_query($connect, null, 'group_type_product', null);
+ ?>
 <!doctype html>
 <html lang="th">
 
@@ -72,7 +81,7 @@
 	<section class="best-seller-area pb-30">
 		<div class="container">
 			<div class="section-title">
-				<h2>Best Sellers</h2>
+				<h2>สินค้าขายดี</h2>
 			</div>
 
 			<div class="best-product-slider owl-carousel owl-theme">
@@ -89,8 +98,8 @@
 				<h5>Sale offer - <span>30% off</span></h5>
 				<h3>All Types Of Premium Quality Tools</h3>
 				<a href="products.html" class="default-btn">
-					<i class="ri-shopping-cart-line"></i>
-					Shop Now
+					<i class="ri-eye-fill"></i>
+					View All
 				</a>
 			</div>
 		</div>
@@ -104,19 +113,17 @@
 				<div class="col-lg-3">
 					<div class="featured-product-img">
 						<div class="featured-product-content">
-							<span class="best">Best Deals</span>
+							<span class="best">สินค้ามาใหม่ และสินค้ายอดนิยม</span>
 							<h3>Premium Tools Sets</h3>
-							<span class="offer">Up to 30% off</span>
-							<a href="products.html">
-								Shop Now
-							</a>
+							<!-- <span class="offer">Up to 30% off</span> -->
+
 						</div>
 					</div>
 				</div>
 
 				<div class="col-lg-9">
 					<div class="section-title">
-						<h2>Featured Products</h2>
+						<h2>รายการสินค้านำเข้าใหม่</h2>
 					</div>
 
 					<div class="featured-product-wrap">
@@ -129,12 +136,19 @@
 	<!-- End Featured Products Area -->
 
 	<!-- Start New Arrivals Area -->
+	<?php
+        $getgroup = $getdata->my_sql_select($connect, NULL, "group_type_product", "ORDER BY id DESC");
+        while ($showgroup = mysqli_fetch_object($getgroup)) {
+    ?>
+
+
+
 	<section class="new-arrivals-area pb-30">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-title">
-						<h2>New Arrivals</h2>
+						<h2>รายการสินค้าหลัก</h2>
 
 						<a href="products.html" class="read-more">
 							View All
@@ -146,6 +160,26 @@
 			</div>
 		</div>
 	</section>
+
+	<?php } ?>
+
+	<!-- <section class="new-arrivals-area pb-30">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<h2>รายการสินค้าหลักอื่น ๆ</h2>
+
+						<a href="products.html" class="read-more">
+							View All
+						</a>
+					</div>
+
+					<?php //include 'layout/product-section-3.php'; ?>
+				</div>
+			</div>
+		</div>
+	</section> -->
 	<!-- End New Arrivals Area -->
 
 	<!-- Start Sale Discount Area -->
@@ -902,199 +936,13 @@
 	<!-- End Newsletter Modal -->
 
 	<!-- Start Product View One Area -->
-	<div class="modal fade product-view-one" id="exampleModal">
-		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-			<div class="modal-content">
-				<button type="button" class="close" data-bs-dismiss="modal">
-					<span aria-hidden="true">
-						<i class="ri-close-line"></i>
-					</span>
-				</button>
-
-				<div class="row align-items-center">
-					<div class="col-lg-6">
-						<div class="product-view-one-image">
-							<div id="big" class="owl-carousel owl-theme">
-								<div class="item">
-									<img src="assets/images/products/product-1.jpg" alt="Image">
-								</div>
-
-								<div class="item">
-									<img src="assets/images/products/product-2.jpg" alt="Image">
-								</div>
-
-								<div class="item">
-									<img src="assets/images/products/product-3.jpg" alt="Image">
-								</div>
-
-								<div class="item">
-									<img src="assets/images/products/product-4.jpg" alt="Image">
-								</div>
-
-								<div class="item">
-									<img src="assets/images/products/product-5.jpg" alt="Image">
-								</div>
-
-								<div class="item">
-									<img src="assets/images/products/product-6.jpg" alt="Image">
-								</div>
-							</div>
-
-							<div id="thumbs" class="owl-carousel owl-theme">
-								<div class="item">
-									<img src="assets/images/products/product-1.jpg" alt="Image">
-								</div>
-
-								<div class="item">
-									<img src="assets/images/products/product-2.jpg" alt="Image">
-								</div>
-
-								<div class="item">
-									<img src="assets/images/products/product-3.jpg" alt="Image">
-								</div>
-
-								<div class="item">
-									<img src="assets/images/products/product-4.jpg" alt="Image">
-								</div>
-
-								<div class="item">
-									<img src="assets/images/products/product-5.jpg" alt="Image">
-								</div>
-
-								<div class="item">
-									<img src="assets/images/products/product-6.jpg" alt="Image">
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-6">
-						<div class="product-content">
-							<h3>
-								Cordless Drill Professional Combo Drill And Screwdriver
-							</h3>
-
-							<div class="product-review">
-								<div class="rating">
-									<i class="ri-star-fill"></i>
-									<i class="ri-star-fill"></i>
-									<i class="ri-star-fill"></i>
-									<i class="ri-star-fill"></i>
-									<i class="ri-star-fill"></i>
-								</div>
-								<a href="#" class="rating-count">4 Reviews</a>
-							</div>
-
-							<div class="price">
-								<span class="new-price">$119.0 <del>$219.0</del></span>
-								<span class="in-stock">In Stock (8 Items)</span>
-							</div>
-
-							<ul class="product-info">
-								<li>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At magnam ad reprehenderit fuga nam, non odit necessitatibus facilis beatae temporibus</p>
-								</li>
-								<li>
-									<span>SKU:</span>
-									001
-								</li>
-								<li>
-									<span>Availability:</span>
-									Available
-								</li>
-								<li>
-									<span>Brand:</span>
-									Ehay
-								</li>
-								<li>
-									<span>Categories:</span>
-									<a href="products.html">Power Drill</a>
-								</li>
-							</ul>
-
-							<div class="product-color-switch">
-
-								<ul>
-									<li>
-										<span>Color:</span>
-									</li>
-									<li>
-										<button title="Black" class="color-black"></button>
-									</li>
-									<li>
-										<button title="White" class="color-white"></button>
-									</li>
-									<li class="active">
-										<button title="Green" class="color-green"></button>
-									</li>
-									<li>
-										<button title="Yellow Green" class="color-yellowgreen"></button>
-									</li>
-									<li>
-										<button title="Teal" class="color-teal"></button>
-									</li>
-								</ul>
-							</div>
-
-							<div class="product-add-to-cart">
-								<div class="input-counter">
-									<span class="minus-btn">
-										<i class="ri-subtract-line"></i>
-									</span>
-
-									<input type="text" value="1">
-
-									<span class="plus-btn">
-										<i class="ri-add-line"></i>
-									</span>
-								</div>
-
-								<a href="cart.html" class="default-btn">
-									<i class="ri-shopping-cart-line"></i>
-									Add To Cart
-								</a>
-							</div>
-
-							<div class="wishlist-btn">
-								<a href="wishlist.html" class="default-btn">
-									<i class="ri-heart-line"></i>
-									Wishlist
-								</a>
-							</div>
-
-							<div class="share-this-product">
-								<ul>
-									<li>
-										<span>Share</span>
-									</li>
-									<li>
-										<a href="https://www.facebook.com/" target="_blank">
-											<i class="ri-facebook-fill"></i>
-										</a>
-									</li>
-									<li>
-										<a href="https://www.instagram.com/" target="_blank">
-											<i class="ri-instagram-line"></i>
-										</a>
-									</li>
-									<li>
-										<a href="https://www.linkedin.com/" target="_blank">
-											<i class="ri-linkedin-fill"></i>
-										</a>
-									</li>
-									<li>
-										<a href="https://twitter.com/" target="_blank">
-											<i class="ri-twitter-fill"></i>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="modal fade product-view-one" id="product-group-1">
+		<?php include 'layout/popup-section/detail-product-section-1.php'; ?>
 	</div>
+
+	<!-- <div class="modal fade product-view-one" id="product-group-2"> 
+		<?php //include 'layout/popup-section/detail-product-section-2.php'; ?>
+	</div> -->
 	<!-- End Product View One Area -->
 
 	<!-- Start Go Top Area -->

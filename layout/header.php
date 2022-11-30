@@ -298,7 +298,7 @@
 											</ul>
 										</div>
 
-										<div class="col">
+										<!-- <div class="col">
 											<h6 class="sub-menu-title">Admin Page</h6>
 
 											<ul class="sub-menu">
@@ -324,7 +324,7 @@
 													<a href="password.html">Change Password</a>
 												</li>
 											</ul>
-										</div>
+										</div> -->
 
 										<div class="col">
 											<a href="products.html" class="menu-img">
