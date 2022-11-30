@@ -81,11 +81,61 @@ mysqli_set_charset($connect, "utf8");
 	<section class="best-seller-area pb-30">
 		<div class="container">
 			<div class="section-title">
-				<h2>สินค้าขายดี</h2>
+				<h2>สินค้ายอดนิยม</h2>
 			</div>
 
 			<div class="best-product-slider owl-carousel owl-theme">
-				<?php include 'layout/product-section-1.php'; ?>
+			<?php
+								$getproduct_new_hot = $getdata->my_sql_select($connect, NULL, "product_name", "product_status = 'Hot' ORDER BY id ASC");
+								while ($showlist = mysqli_fetch_object($getproduct_new_hot)) { 
+							?>
+							<div class="single-products">
+								<div class="product-img">
+								<a href="#">
+										<img src="assets/images/products/<?php echo $showlist->product_img; ?>"
+											alt="Image">
+									</a>
+
+									<?php 
+										if($showlist->product_status == "New"){
+											echo '<span class="hot new">New</span>';
+										} else{
+											echo '<span class="hot">Hot</span>';
+										} 
+									?>
+								</div>
+
+								<div class="product-content">
+									<a href="#" class="title">
+										<?php echo $showlist->product_name; ?>
+									</a>
+
+
+									<ul class="products-price">
+										<li>
+											<?php 
+												if($showlist->product_stock == "Y") {
+													echo '<span class="text-success">In Stock</span>';
+												} else if ($showlist->product_stock == "N") {
+													echo '<span class="text-danger">Out Stock</span>';
+												} else {
+													echo "";
+												}
+											?>
+										</li>
+									</ul>
+
+									<ul class="products-cart-wish-view text-center">
+										<li>
+											<button class="eye-btn" data-bs-toggle="modal"
+												data-bs-target="#product-group-1">
+												<i class="ri-eye-line"></i>
+											</button>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<?php } ?>
 			</div>
 		</div>
 	</section>
@@ -123,11 +173,68 @@ mysqli_set_charset($connect, "utf8");
 
 				<div class="col-lg-9">
 					<div class="section-title">
-						<h2>รายการสินค้านำเข้าใหม่</h2>
+						<h2>รายการสินค้ายอดนิยมและนำเข้าใหม่</h2>
 					</div>
 
 					<div class="featured-product-wrap">
-						<?php include 'layout/product-section-2.php'; ?>
+						<div class="featured-product-slider owl-carousel owl-theme">
+
+							<?php
+								$getproduct_new_hot = $getdata->my_sql_select($connect, NULL, "product_name", "product_status = 'New' OR product_status = 'Hot' ORDER BY id ASC");
+								while ($showlist = mysqli_fetch_object($getproduct_new_hot)) { 
+							?>
+							<div class="single-products">
+								<div class="product-img">
+								<a href="#">
+										<img src="assets/images/products/<?php echo $showlist->product_img; ?>"
+											alt="Image">
+									</a>
+
+									<?php 
+										if($showlist->product_status == "New"){
+											echo '<span class="hot new">New</span>';
+										} else{
+											echo '<span class="hot">Hot</span>';
+										} 
+									?>
+								</div>
+
+								<div class="product-content">
+									<a href="#" class="title">
+										<?php echo $showlist->product_name; ?>
+									</a>
+
+
+									<ul class="products-price">
+										<li>
+											<?php 
+												if($showlist->product_stock == "Y") {
+													echo '<span class="text-success">In Stock</span>';
+												} else if ($showlist->product_stock == "N") {
+													echo '<span class="text-danger">Out Stock</span>';
+												} else {
+													echo "";
+												}
+											?>
+										</li>
+									</ul>
+
+									<ul class="products-cart-wish-view text-center">
+										<li>
+											<button class="eye-btn" data-bs-toggle="modal"
+												data-bs-target="#product-group-1">
+												<i class="ri-eye-line"></i>
+											</button>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<?php } ?>
+
+
+
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -137,50 +244,79 @@ mysqli_set_charset($connect, "utf8");
 
 	<!-- Start New Arrivals Area -->
 	<?php
-        $getgroup = $getdata->my_sql_select($connect, NULL, "group_type_product", "ORDER BY id DESC");
-        while ($showgroup = mysqli_fetch_object($getgroup)) {
+        $getgroup = $getdata->my_sql_select($connect, NULL, "group_type_product", "id  = '1' ORDER BY id ASC");
+        while ($showgroup = mysqli_fetch_object($getgroup)) { 
     ?>
-
-
-
 	<section class="new-arrivals-area pb-30">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-title">
-						<h2>รายการสินค้าหลัก</h2>
+						<h2><?php echo $showgroup->group_name; ?></h2>
 
 						<a href="products.html" class="read-more">
 							View All
 						</a>
 					</div>
+					<div class="row">
+						<?php
+							$getproduct = $getdata->my_sql_select($connect, NULL, "product_name", "group_type = ".$showgroup->id." ORDER BY id ASC");
+							while ($showproduct = mysqli_fetch_object($getproduct)) { 
+						?>
 
-					<?php include 'layout/product-section-3.php'; ?>
+						<div class="col-xl-3 col-sm-6">
+							<div class="single-products new-arrivals">
+								<div class="product-img">
+									<a href="#">
+										<img src="assets/images/products/<?php echo $showproduct->product_img; ?>"
+											alt="Image">
+									</a>
+
+									<?php 
+										if($showproduct->product_status == "New"){
+											echo '<span class="hot new">New</span>';
+										} else if ($showproduct->product_status == "Hot") {
+											echo '<span class="hot">Hot</span>';
+										} else {
+											echo '';
+										}
+									?>
+								</div>
+
+								<div class="product-content">
+									<a href="#" class="title">
+										<?php echo $showproduct->product_name; ?>
+									</a>
+									<ul class="products-rating">
+
+										<li>
+											<a href="#">
+												(<?php echo $showproduct->product_detail; ?>)
+											</a>
+										</li>
+									</ul>
+									<ul class="products-cart-wish-view text-center">
+										<li>
+											<button class="eye-btn" data-bs-toggle="modal"
+												data-bs-target="#product-group-1">
+												<i class="ri-eye-line"></i>
+											</button>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<?php } ?>
+					</div>
+
+
+
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<?php } ?>
-
-	<!-- <section class="new-arrivals-area pb-30">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="section-title">
-						<h2>รายการสินค้าหลักอื่น ๆ</h2>
-
-						<a href="products.html" class="read-more">
-							View All
-						</a>
-					</div>
-
-					<?php //include 'layout/product-section-3.php'; ?>
-				</div>
-			</div>
-		</div>
-	</section> -->
-	<!-- End New Arrivals Area -->
 
 	<!-- Start Sale Discount Area -->
 	<section class="sale-discount-area pb-54">
@@ -199,123 +335,36 @@ mysqli_set_charset($connect, "utf8");
 	<section class="popular-categories-area pb-30">
 		<div class="container">
 			<div class="section-title">
-				<h2>Popular Categories</h2>
+				<h2>หมวดหมู่สินค้า</h2>
 			</div>
 
 			<div class="row justify-content-center">
+				<?php
+					$getproduct = $getdata->my_sql_select($connect, NULL, "product_name", "id ORDER BY id ASC");
+					while ($showproduct = mysqli_fetch_object($getproduct)) { 
+					$countItem = $getdata->my_sql_show_rows($connect, "product_list", "product_id = '".$showproduct->id."'");
+
+				?>
 				<div class="col-lg-4 col-sm-6">
 					<div class="single-categories">
-						<a href="product-details.html">
+						<a href="#">
 							<img src="assets/images/products/product-25.jpg" alt="Image">
 						</a>
 
 						<h3>
-							<a href="product-details.html">
-								Power Tools
+							<a href="#">
+								<?php echo $showproduct->product_name; ?>
 							</a>
 						</h3>
-						<span>15 Products</span>
+						<span><?php echo @number_format($countItem); ?> Products</span>
 
-						<a href="product-details" class="read-more">
-							Shop Now
+						<a href="#" class="read-more">
+							View All
 						</a>
 					</div>
 				</div>
+				<?php } ?>
 
-				<div class="col-lg-4 col-sm-6">
-					<div class="single-categories bg-eff5ff">
-						<a href="product-details.html">
-							<img src="assets/images/products/product-26.jpg" alt="Image">
-						</a>
-
-						<h3>
-							<a href="product-details.html">
-								Machine Tools
-							</a>
-						</h3>
-						<span>05 Products</span>
-
-						<a href="product-details" class="read-more">
-							Shop Now
-						</a>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-sm-6">
-					<div class="single-categories bg-ebf1f5">
-						<a href="product-details.html">
-							<img src="assets/images/products/product-27.jpg" alt="Image">
-						</a>
-
-						<h3>
-							<a href="product-details.html">
-								Hand Tools
-							</a>
-						</h3>
-						<span>18 Products</span>
-
-						<a href="product-details" class="read-more">
-							Shop Now
-						</a>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-sm-6">
-					<div class="single-categories bg-ebf9ea">
-						<a href="product-details.html">
-							<img src="assets/images/products/product-28.jpg" alt="Image">
-						</a>
-
-						<h3>
-							<a href="product-details.html">
-								Cordless Tools
-							</a>
-						</h3>
-						<span>19 Products</span>
-
-						<a href="product-details" class="read-more">
-							Shop Now
-						</a>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-sm-6">
-					<div class="single-categories bg-fff8e5">
-						<a href="product-details.html">
-							<img src="assets/images/products/product-29.jpg" alt="Image">
-						</a>
-
-						<h3>
-							<a href="product-details.html">
-								Welding & Soldering
-							</a>
-						</h3>
-						<span>04 Products</span>
-
-						<a href="product-details" class="read-more">
-							Shop Now
-						</a>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-sm-6">
-					<div class="single-categories bg-f3f1ff">
-						<a href="product-details.html">
-							<img src="assets/images/products/product-30.jpg" alt="Image">
-						</a>
-
-						<h3>
-							<a href="product-details.html">
-								Socket Wrenches
-							</a>
-						</h3>
-						<span>12 Products</span>
-
-						<a href="product-details" class="read-more">
-							Shop Now
-						</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>
@@ -351,7 +400,7 @@ mysqli_set_charset($connect, "utf8");
 	<!-- End Partner Area -->
 
 	<!-- Start Special Area -->
-	<section class="special-area pb-30">
+	<!-- <section class="special-area pb-30">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-4 col-md-6">
@@ -365,7 +414,7 @@ mysqli_set_charset($connect, "utf8");
 							<span class="hot new">-30%</span>
 
 							<div class="product-content">
-								<a href="product-details.html" class="title">
+								<a href="#" class="title">
 									White Whale Vacuum Cleaner High Quality Product
 								</a>
 
@@ -401,7 +450,7 @@ mysqli_set_charset($connect, "utf8");
 							<span class="hot new">-50%</span>
 
 							<div class="product-content">
-								<a href="product-details.html" class="title">
+								<a href="#" class="title">
 									Professional Cordless Drill Power Tools Set Competitive Price
 								</a>
 
@@ -437,7 +486,7 @@ mysqli_set_charset($connect, "utf8");
 							<span class="hot new">-20%</span>
 
 							<div class="product-content">
-								<a href="product-details.html" class="title">
+								<a href="#" class="title">
 									Power Tools Set Chinese Manufacturer Production 50V Lithu Battery
 								</a>
 
@@ -480,7 +529,7 @@ mysqli_set_charset($connect, "utf8");
 							<img src="assets/images/products/product-34.jpg" alt="Image">
 
 							<div class="product-content">
-								<a href="product-details.html" class="title">
+								<a href="#" class="title">
 									Grinding Machine Polisher Household 5 Inch Mini Portable Power Tools
 								</a>
 
@@ -515,7 +564,7 @@ mysqli_set_charset($connect, "utf8");
 							<img src="assets/images/products/product-35.jpg" alt="Image">
 
 							<div class="product-content">
-								<a href="product-details.html" class="title">
+								<a href="#" class="title">
 									Professional 2000W 25mm Electric Jack Hammer Drill
 								</a>
 
@@ -550,7 +599,7 @@ mysqli_set_charset($connect, "utf8");
 							<img src="assets/images/products/product-36.jpg" alt="Image">
 
 							<div class="product-content">
-								<a href="product-details.html" class="title">
+								<a href="#" class="title">
 									Electrical Magnetic Impact Power Hammer Drills Machine
 								</a>
 
@@ -593,7 +642,7 @@ mysqli_set_charset($connect, "utf8");
 							<img src="assets/images/products/product-37.jpg" alt="Image">
 
 							<div class="product-content">
-								<a href="product-details.html" class="title">
+								<a href="#" class="title">
 									High Quality Industrial Stapler Powerful Heavy Duty Metal
 								</a>
 
@@ -628,7 +677,7 @@ mysqli_set_charset($connect, "utf8");
 							<img src="assets/images/products/product-38.jpg" alt="Image">
 
 							<div class="product-content">
-								<a href="product-details.html" class="title">
+								<a href="#" class="title">
 									High Quality Carbon Steel Professional Power Tools
 								</a>
 
@@ -663,7 +712,7 @@ mysqli_set_charset($connect, "utf8");
 							<img src="assets/images/products/product-39.jpg" alt="Image">
 
 							<div class="product-content">
-								<a href="product-details.html" class="title">
+								<a href="#" class="title">
 									DFMALB 20V Max XX Oscillating Multi Variable Speed Tool
 								</a>
 
@@ -697,7 +746,7 @@ mysqli_set_charset($connect, "utf8");
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- End Special Area -->
 
 	<!-- Start Subscribe Area -->
@@ -838,7 +887,7 @@ mysqli_set_charset($connect, "utf8");
 					</div>
 				</div>
 
-				<div class="col-lg-3 col-sm-6">
+				<!-- <div class="col-lg-3 col-sm-6">
 					<div class="single-footer-widget">
 						<h3>Download App On Mobile</h3>
 						<p>30% discount on your first order</p>
@@ -873,7 +922,7 @@ mysqli_set_charset($connect, "utf8");
 							</li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
