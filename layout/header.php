@@ -221,7 +221,7 @@
 				<div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
 					<ul class="navbar-nav">
 						<li class="nav-item float-end">
-							<a href="#" class="nav-link active">
+							<a href="index" class="nav-link active">
 								หน้าแรก
 							</a>
 						</li>
@@ -344,7 +344,14 @@
 
 						</li>
 						<li class="nav-item">
-							<a href="contact.html" class="nav-link">Contact</a>
+							<a href="#" class="nav-link">
+								เกี่ยวกับเรา
+							</a>
+
+
+						</li>
+						<li class="nav-item">
+							<a href="contact" class="nav-link">ติดต่อเรา</a>
 						</li>
 					</ul>
 

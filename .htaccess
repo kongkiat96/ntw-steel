@@ -1,0 +1,7 @@
+ErrorDocument 404 http://localhost/@production/ntw-steel/404
+# ErrorDocument 404 https://ntwsteels.com/404
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L] 
+
