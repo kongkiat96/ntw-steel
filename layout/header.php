@@ -10,7 +10,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="store-location.html">
+						<a href="contact">
 							สถานที่ตั้ง
 						</a>
 					</li>
